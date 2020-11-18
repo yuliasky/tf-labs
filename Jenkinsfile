@@ -55,6 +55,7 @@ pipeline {
     stage('Run Ansible playbook') {
       steps {
         withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'cicd-ssh-key', keyFileVariable: 'KEY')]) {
+          sh 'sleep 60'
           sh 'ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook playbook.yml -i tf.gcp.yml --private-key ${KEY} -b -u $ANSIBLE_USER'
         }
 
