@@ -2,7 +2,7 @@ plugin: gcp_compute
 projects:
   - auto-infra-20201117-student3xi
 auth_kind: serviceaccount
-service_account_file: creds/jenkins-sa.json
+service_account_file: ./creds/jenkins-sa.json
 filters: []
 keyed_groups:
   - key: labels
