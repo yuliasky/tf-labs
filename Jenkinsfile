@@ -20,10 +20,11 @@ pipeline {
         checkout scm
         sh 'mkdir -p creds'
     //    sh 'echo $SVC_ACCOUNT_KEY | base64 -di > ./creds/jenkins-sa.json'
-        sh 'cat <<EOF | base64 -di > ./creds/jenkins-sa.json
+        sh """
+        sh cat <<EOF | base64 -di > ./creds/jenkins-sa.json
         $SVC_ACCOUNT_KEY
-
-       EOF'
+        EOF
+        """.stripIndent()
       }
     }
 
