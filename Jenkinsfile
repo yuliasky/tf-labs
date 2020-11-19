@@ -2,7 +2,7 @@ pipeline {
   agent any
   environment {
     SVC_ACCOUNT_KEY = credentials('jenkins-gcp')
-      PROJECT_ID = 'student1gcp-istio'
+      PROJECT_ID = 'auto-infra-20201117-student3xi'
       DEFAULT_LOCAL_TMP = 'tmp/'
       ANSIBLE_USER = 'ubuntu'
       HOME = '/tmp'
@@ -25,7 +25,7 @@ pipeline {
 
     stage('Install Terraform') {
       steps {
-        sh 'curl -o terraform.zip https://releases.hashicorp.com/terraform/0.13.4/terraform_0.13.4_linux_amd64.zip'
+        sh 'curl -o terraform.zip https://releases.hashicorp.com/terraform/0.13.5/terraform_0.13.5_linux_amd64.zip'
         sh 'unzip terraform.zip'
       }
     }
