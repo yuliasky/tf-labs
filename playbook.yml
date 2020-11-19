@@ -29,7 +29,7 @@
         append: yes
       notify: restart docker
 
-- name: Install fun packages
+- name: Install packages
   hosts: dev
   gather_facts: yes
   tasks:
@@ -38,7 +38,6 @@
       state: latest
     with_items:
       - curl
-      - rolldice
-      - vim-nox
       - ntp
+      - nginx
  

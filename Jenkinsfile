@@ -19,7 +19,7 @@ pipeline {
       steps {
         checkout scm
         sh 'mkdir -p creds'
-        sh 'echo $SVC_ACCOUNT_KEY | base64 -di > ./creds/jenkins-sa.json'
+        sh 'echo $SVC_ACCOUNT_KEY | base64 -i > ./creds/jenkins-sa.json'
       }
     }
 
@@ -55,6 +55,7 @@ pipeline {
     stage('Run Ansible playbook') {
       steps {
         withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'cicd-ssh-key', keyFileVariable: 'KEY')]) {
+          sh 'sleep 20'
           sh 'ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook playbook.yml -i tf.gcp.yml --private-key ${KEY} -b -u $ANSIBLE_USER'
         }
 
