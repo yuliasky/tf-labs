@@ -25,7 +25,7 @@ pipeline {
 
     stage('Install Terraform') {
       steps {
-        sh 'curl -o terraform.zip https://releases.hashicorp.com/terraform/0.13.5/terraform_0.13.5_linux_amd64.zip'
+        sh 'curl -o terraform.zip https://releases.hashicorp.com/terraform/0.14.5/terraform_0.14.5_linux_amd64.zip'
         sh 'unzip terraform.zip'
       }
     }
