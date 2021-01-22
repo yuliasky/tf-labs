@@ -20,7 +20,6 @@ pipeline {
         checkout scm
         sh 'mkdir -p creds'
         sh 'echo $SVC_ACCOUNT_KEY | base64 -di > ./creds/jenkins-sa.json'
-   //     sh 'export GOOGLE_APPLICATION_CREDENTIALS=./creds/jenkins-sa.json'
       }
     }
 
@@ -33,7 +32,6 @@ pipeline {
 
     stage('TF Plan') {
       steps {
-   //     sh 'echo Test $GOOGLE_APPLICATION_CREDENTIALS'
         sh './terraform init -reconfigure'
         sh './terraform plan -var project_id=$PROJECT_ID -var jenkins_workers_project_id=$PROJECT_ID -out myplan'
       }
